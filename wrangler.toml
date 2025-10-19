@@ -1,0 +1,74 @@
+# Cloudflare Pages configuration
+name = "artist-portfolio-website"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_dir = "."
+
+[build.environment_variables]
+NODE_VERSION = "18"
+NPM_VERSION = "9"
+
+# Pages configuration
+pages_build_output_dir = "out"
+
+# Custom headers for optimization
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets
+[[headers]]
+for = "/_next/static/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/images/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache HTML with shorter duration
+[[headers]]
+for = "*.html"
+[headers.values]
+Cache-Control = "public, max-age=3600, s-maxage=86400"
+
+# Cache API routes
+[[headers]]
+for = "/api/*"
+[headers.values]
+Cache-Control = "public, max-age=300, s-maxage=3600"
+
+# Security headers for forms
+[[headers]]
+for = "/contact"
+[headers.values]
+Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' web3forms.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' web3forms.com; form-action 'self' web3forms.com;"
+
+# Redirect rules for SEO
+[[redirects]]
+from = "/work/category-a"
+to = "/work/A"
+status = 301
+
+[[redirects]]
+from = "/work/category-b"
+to = "/work/B"
+status = 301
+
+[[redirects]]
+from = "/work/category-c"
+to = "/work/C"
+status = 301
+
+[[redirects]]
+from = "/work/category-d"
+to = "/work/D"
+status = 301

@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-primary-900 font-sans antialiased;
+  }
+
+  * {
+    @apply border-primary-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-900 text-white px-6 py-3 rounded-lg hover:bg-primary-800 transition-colors duration-200 font-medium;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary-900 border border-primary-300 px-6 py-3 rounded-lg hover:bg-primary-50 transition-colors duration-200 font-medium;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+
+  /* Touch-friendly interactions */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  /* Responsive spacing utilities */
+  .space-responsive-sm {
+    @apply space-y-4 sm:space-y-6;
+  }
+
+  .space-responsive-md {
+    @apply space-y-6 sm:space-y-8 lg:space-y-12;
+  }
+
+  .space-responsive-lg {
+    @apply space-y-8 sm:space-y-12 lg:space-y-16;
+  }
+
+  /* Responsive padding utilities */
+  .p-responsive-sm {
+    @apply p-3 sm:p-4 lg:p-6;
+  }
+
+  .p-responsive-md {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .p-responsive-lg {
+    @apply p-6 sm:p-8 lg:p-12;
+  }
+
+  /* Responsive margin utilities */
+  .m-responsive-sm {
+    @apply m-3 sm:m-4 lg:m-6;
+  }
+
+  .m-responsive-md {
+    @apply m-4 sm:m-6 lg:m-8;
+  }
+
+  .m-responsive-lg {
+    @apply m-6 sm:m-8 lg:m-12;
+  }
+
+  /* Responsive gap utilities */
+  .gap-responsive-sm {
+    @apply gap-3 sm:gap-4 lg:gap-6;
+  }
+
+  .gap-responsive-md {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .gap-responsive-lg {
+    @apply gap-6 sm:gap-8 lg:gap-12;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    /* Improve touch scrolling on mobile */
+    .mobile-scroll {
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    /* Prevent zoom on input focus */
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='password'],
+    textarea,
+    select {
+      font-size: 16px;
+    }
+
+    /* Improve button accessibility on mobile */
+    button,
+    [role='button'],
+    input[type='submit'],
+    input[type='button'] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* High DPI display optimizations */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .crisp-edges {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+
+  /* Enhanced animations */
+  .animate-fade-in {
+    animation: fadeIn 1.2s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out 0.2s both;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseGentle 3s ease-in-out infinite;
+  }
+
+  .animate-shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    transition:
+      transform 0.3s ease-out,
+      box-shadow 0.3s ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease-out;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Smooth loading state */
+  .loading-blur {
+    filter: blur(5px);
+    transition: filter 0.3s ease-out;
+  }
+
+  .loaded {
+    filter: blur(0);
+  }
+
+  /* Stagger animation utility */
+  .stagger-animation > * {
+    animation-delay: calc(var(--stagger-delay, 0.1s) * var(--stagger-index, 0));
+  }
+}
+
+/* Enhanced keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceGentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseGentle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-2px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(2px);
+  }
+}

@@ -1,0 +1,52 @@
+# === Node.js Dependencies ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# === Build Output ===
+.next/
+out/
+dist/
+build/
+.cache/
+coverage/
+
+# === Environment Files ===
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.kiro/*
+
+# === Vercel / Cloudflare ===
+.vercel/
+wrangler.toml
+
+# === Lighthouse / Test Reports ===
+.lighthouseci/
+test-results/
+playwright-report/
+*.lcov
+TEST_SUMMARY.md
+# === System / Editor Files ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# === Misc ===
+*.tgz
+*.zip
+*.tar
+*.tar.gz
+*.pem
+*.log
+
+# === Optional: Ignore documentation previews ===
+/out/
+docs-build/

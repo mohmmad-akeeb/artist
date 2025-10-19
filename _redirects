@@ -1,0 +1,16 @@
+# Cloudflare Pages _redirects file
+
+# Legacy URL redirects for SEO
+/work/category-a /work/A 301
+/work/category-b /work/B 301
+/work/category-c /work/C 301
+/work/category-d /work/D 301
+
+# Handle trailing slashes consistently
+/about /about/ 301
+/work /work/ 301
+/press /press/ 301
+/contact /contact/ 301
+
+# Fallback for SPA routing (if needed)
+/* /index.html 200
