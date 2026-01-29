@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Artwork } from '@/lib/types';
 import { useCartActions, useIsInCart } from '@/lib/cart-store';
 import { useModalActions } from '@/lib/modal-store';
@@ -52,6 +52,16 @@ function ImageCard({ artwork, onImageClick, onCartToggle }: ImageCardProps) {
         isInCart ? 'ring-2 ring-primary-600 ring-offset-2' : ''
       }`}
       onClick={handleImageClick}
+      role="button"
+      aria-label={`View details for ${artwork.title}`}
+      data-testid="artwork-card"
+      tabIndex={0}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleImageClick();
+        }
+      }}
     >
       {/* Aspect ratio container */}
       <div className="aspect-square relative">
@@ -229,7 +239,11 @@ export default function ImageGrid({ artworks }: ImageGridProps) {
   return (
     <div className="w-full">
       {/* Grid Container */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 3xl:grid-cols-8 gap-3 sm:gap-4 lg:gap-6">
+      <div
+        role="grid"
+        aria-label="Artwork gallery"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 3xl:grid-cols-8 gap-3 sm:gap-4 lg:gap-6"
+      >
         {artworks.map(artwork => (
           <ImageCard
             key={artwork.id}

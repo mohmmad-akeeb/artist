@@ -1,26 +1,28 @@
 /**
  * @jest-environment jsdom
  */
+import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import ImageModal from '../ImageModal';
 import { Artwork } from '@/lib/types';
+import { vi } from 'vitest';
 
 // Mock the cart store
-jest.mock('@/lib/cart-store', () => ({
-  useIsInCart: jest.fn(() => false),
-  useCartActions: jest.fn(() => ({
-    toggleItem: jest.fn(),
+vi.mock('@/lib/cart-store', () => ({
+  useIsInCart: vi.fn(() => false),
+  useCartActions: vi.fn(() => ({
+    toggleItem: vi.fn(),
   })),
 }));
 
 // Mock Next.js Image component
-jest.mock('next/image', () => {
-  return function MockImage({ src, alt, onLoad, onError, ...props }: any) {
+vi.mock('next/image', () => ({
+  default: function MockImage({ src, alt, onLoad, onError, ...props }: any) {
     return (
       <img src={src} alt={alt} onLoad={onLoad} onError={onError} {...props} />
     );
-  };
-});
+  },
+}));
 
 const mockArtwork: Artwork = {
   id: 'A1',
@@ -35,7 +37,7 @@ const mockArtwork: Artwork = {
 };
 
 describe('ImageModal', () => {
-  const mockOnClose = jest.fn();
+  const mockOnClose = vi.fn();
 
   beforeEach(() => {
     mockOnClose.mockClear();
@@ -65,7 +67,7 @@ describe('ImageModal', () => {
     expect(
       screen.getByText('A beautiful test artwork for modal display')
     ).toBeInTheDocument();
-    expect(screen.getByText('A1')).toBeInTheDocument();
+    expect(screen.getAllByText('A1').length).toBeGreaterThan(0);
   });
 
   it('displays artwork details correctly', () => {
@@ -73,7 +75,7 @@ describe('ImageModal', () => {
       <ImageModal isOpen={true} artwork={mockArtwork} onClose={mockOnClose} />
     );
 
-    expect(screen.getByText('2023')).toBeInTheDocument();
+    expect(screen.getAllByText('2023').length).toBeGreaterThan(0);
     expect(screen.getByText('Oil on canvas')).toBeInTheDocument();
     expect(screen.getByText('24x36 inches')).toBeInTheDocument();
     expect(screen.getByText('Category A')).toBeInTheDocument();
@@ -128,7 +130,7 @@ describe('ImageModal', () => {
     );
 
     expect(screen.getByLabelText('Add A1 to cart')).toBeInTheDocument();
-    expect(screen.getByText('Add to Selection')).toBeInTheDocument();
+    expect(screen.getByText('Select for Print Query')).toBeInTheDocument();
   });
 
   it('shows error state when image fails to load', async () => {

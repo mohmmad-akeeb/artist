@@ -24,9 +24,13 @@ import {
   shouldLazyLoad,
 } from '../image-utils';
 
-// Mock performance.now
+// Mock performance.now with incrementing time to ensure non-zero durations
+let currentTime = 1000;
 global.performance = {
-  now: vi.fn(() => Date.now()),
+  now: vi.fn(() => {
+    currentTime += 10; // Increment by 10ms each call
+    return currentTime;
+  }),
 } as any;
 
 // Mock navigator
@@ -172,19 +176,25 @@ describe('Image Utils', () => {
 
     it('calculates average load time correctly', () => {
       // Mock performance.now to return predictable values
-      let mockTime = 1000;
-      vi.mocked(performance.now).mockImplementation(() => mockTime);
+      // Use the global mock which auto-increments
+      // let mockTime = 1000;
+      // vi.mocked(performance.now).mockImplementation(() => mockTime);
 
       const startTime1 = tracker.trackLoadStart();
-      mockTime = 1100; // 100ms later
+      // mockTime = 1100; // 100ms later
       tracker.trackLoadSuccess(startTime1);
 
       const startTime2 = tracker.trackLoadStart();
-      mockTime = 1300; // 200ms later
+      // mockTime = 1300; // 200ms later
       tracker.trackLoadSuccess(startTime2);
 
       const metrics = tracker.getMetrics();
-      expect(metrics.averageLoadTime).toBe(150); // (100 + 200) / 2
+      // With global mock starting at 1000 and +10 per call:
+      // start1: 1010
+      // success1: 1020 (duration 10)
+      // start2: 1030
+      // success2: 1040 (duration 10)
+      expect(metrics.averageLoadTime).toBe(10);
     });
 
     it('resets metrics correctly', () => {

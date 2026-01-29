@@ -39,9 +39,9 @@ describe('Cart Store', () => {
   });
 
   it('should add item to cart', () => {
-    const { addItem, items, getItemCount, isInCart } = useCartStore.getState();
+    useCartStore.getState().addItem(mockArtwork);
 
-    addItem(mockArtwork);
+    const { items, getItemCount, isInCart } = useCartStore.getState();
 
     expect(items).toHaveLength(1);
     expect(getItemCount()).toBe(1);
@@ -54,23 +54,22 @@ describe('Cart Store', () => {
   });
 
   it('should not add duplicate items', () => {
-    const { addItem, items, getItemCount } = useCartStore.getState();
+    useCartStore.getState().addItem(mockArtwork);
+    useCartStore.getState().addItem(mockArtwork); // Try to add same item again
 
-    addItem(mockArtwork);
-    addItem(mockArtwork); // Try to add same item again
+    const { items, getItemCount } = useCartStore.getState();
 
     expect(items).toHaveLength(1);
     expect(getItemCount()).toBe(1);
   });
 
   it('should remove item from cart', () => {
-    const { addItem, removeItem, items, getItemCount, isInCart } =
-      useCartStore.getState();
+    useCartStore.getState().addItem(mockArtwork);
+    expect(useCartStore.getState().getItemCount()).toBe(1);
 
-    addItem(mockArtwork);
-    expect(getItemCount()).toBe(1);
+    useCartStore.getState().removeItem('A1');
 
-    removeItem('A1');
+    const { items, getItemCount, isInCart } = useCartStore.getState();
 
     expect(items).toHaveLength(0);
     expect(getItemCount()).toBe(0);
@@ -78,27 +77,25 @@ describe('Cart Store', () => {
   });
 
   it('should toggle items correctly', () => {
-    const { toggleItem, isInCart, getItemCount } = useCartStore.getState();
-
     // Add item
-    toggleItem(mockArtwork);
-    expect(isInCart('A1')).toBe(true);
-    expect(getItemCount()).toBe(1);
+    useCartStore.getState().toggleItem(mockArtwork);
+    expect(useCartStore.getState().isInCart('A1')).toBe(true);
+    expect(useCartStore.getState().getItemCount()).toBe(1);
 
     // Remove item
-    toggleItem(mockArtwork);
-    expect(isInCart('A1')).toBe(false);
-    expect(getItemCount()).toBe(0);
+    useCartStore.getState().toggleItem(mockArtwork);
+    expect(useCartStore.getState().isInCart('A1')).toBe(false);
+    expect(useCartStore.getState().getItemCount()).toBe(0);
   });
 
   it('should clear all items', () => {
-    const { addItem, clearCart, items, getItemCount } = useCartStore.getState();
+    useCartStore.getState().addItem(mockArtwork);
+    useCartStore.getState().addItem(mockArtwork2);
+    expect(useCartStore.getState().getItemCount()).toBe(2);
 
-    addItem(mockArtwork);
-    addItem(mockArtwork2);
-    expect(getItemCount()).toBe(2);
+    useCartStore.getState().clearCart();
 
-    clearCart();
+    const { items, getItemCount } = useCartStore.getState();
 
     expect(items).toHaveLength(0);
     expect(getItemCount()).toBe(0);

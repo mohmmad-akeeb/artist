@@ -1,23 +1,25 @@
 /**
  * @jest-environment jsdom
  */
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CategoryGrid from '../CategoryGrid';
 import { Category } from '@/lib/types';
+import { vi } from 'vitest';
 
 // Mock Next.js components
-jest.mock('next/link', () => {
-  return function MockLink({ children, href }: any) {
+vi.mock('next/link', () => ({
+  default: function MockLink({ children, href }: any) {
     return <a href={href}>{children}</a>;
-  };
-});
+  },
+}));
 
-jest.mock('next/image', () => {
-  return function MockImage({ alt, src }: any) {
+vi.mock('next/image', () => ({
+  default: function MockImage({ alt, src }: any) {
     // eslint-disable-next-line @next/next/no-img-element
     return <img alt={alt} src={src} />;
-  };
-});
+  },
+}));
 
 const mockCategories: Category[] = [
   {
@@ -75,10 +77,10 @@ describe('CategoryGrid', () => {
 
     const links = screen.getAllByRole('link');
     expect(links).toHaveLength(4);
-    expect(links[0]).toHaveAttribute('href', '/work/a');
-    expect(links[1]).toHaveAttribute('href', '/work/b');
-    expect(links[2]).toHaveAttribute('href', '/work/c');
-    expect(links[3]).toHaveAttribute('href', '/work/d');
+    expect(links[0]).toHaveAttribute('href', '/work/a/');
+    expect(links[1]).toHaveAttribute('href', '/work/b/');
+    expect(links[2]).toHaveAttribute('href', '/work/c/');
+    expect(links[3]).toHaveAttribute('href', '/work/d/');
   });
 
   it('displays category descriptions', () => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
 import { createImageErrorHandler } from '@/lib/error-handling';
 
@@ -61,6 +61,7 @@ export default function ErrorHandledImage({
   if (hasError && !fallbackSrc && showErrorState) {
     return (
       <div
+        data-testid="error-state"
         className={`bg-primary-100 flex items-center justify-center ${className}`}
         style={
           width && height

@@ -1,12 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-import { render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ContactForm from '../ContactForm';
+import { vi, Mock } from 'vitest';
 
 // Mock fetch
-global.fetch = jest.fn();
+global.fetch = vi.fn();
 
 // Mock environment variable
 const originalEnv = process.env;
@@ -22,12 +24,12 @@ afterAll(() => {
 });
 
 describe('ContactForm', () => {
-  const mockOnSubmitSuccess = jest.fn();
-  const mockOnSubmitError = jest.fn();
+  const mockOnSubmitSuccess = vi.fn();
+  const mockOnSubmitError = vi.fn();
 
   beforeEach(() => {
-    jest.clearAllMocks();
-    (fetch as jest.Mock).mockClear();
+    vi.clearAllMocks();
+    (fetch as Mock).mockClear();
   });
 
   describe('Rendering', () => {
@@ -117,10 +119,10 @@ describe('ContactForm', () => {
       const submitButton = screen.getByRole('button', {
         name: /send message/i,
       });
-      await user.click(submitButton);
+      fireEvent.submit(submitButton.closest('form')!);
 
       expect(
-        screen.getByText('Please enter a valid email address')
+        await screen.findByText('Please enter a valid email address')
       ).toBeInTheDocument();
     });
 
@@ -223,7 +225,7 @@ describe('ContactForm', () => {
       const user = userEvent.setup();
 
       // Mock successful health check and submission
-      (fetch as jest.Mock)
+      (fetch as Mock)
         .mockResolvedValueOnce({
           ok: true,
           json: () => Promise.resolve({ success: true }),
@@ -264,7 +266,7 @@ describe('ContactForm', () => {
       const user = userEvent.setup();
 
       // Mock delayed response
-      (fetch as jest.Mock)
+      (fetch as Mock)
         .mockResolvedValueOnce({
           ok: true,
           json: () => Promise.resolve({ success: true }),
@@ -308,7 +310,7 @@ describe('ContactForm', () => {
       const user = userEvent.setup();
 
       // Mock network error
-      (fetch as jest.Mock).mockRejectedValue(new Error('Network error'));
+      (fetch as Mock).mockRejectedValue(new Error('Network error'));
 
       render(<ContactForm onSubmitError={mockOnSubmitError} />);
 
@@ -340,7 +342,7 @@ describe('ContactForm', () => {
       const user = userEvent.setup();
 
       // Mock service unavailable (health check fails)
-      (fetch as jest.Mock).mockRejectedValue(new Error('Service unavailable'));
+      (fetch as Mock).mockRejectedValue(new Error('Service unavailable'));
 
       render(<ContactForm />);
 
@@ -370,7 +372,7 @@ describe('ContactForm', () => {
       const user = userEvent.setup();
 
       // Mock health check success, then fail twice, then succeed
-      (fetch as jest.Mock)
+      (fetch as Mock)
         .mockResolvedValueOnce({
           ok: true,
           json: () => Promise.resolve({ success: true }),
@@ -411,7 +413,7 @@ describe('ContactForm', () => {
       const user = userEvent.setup();
 
       // Mock successful submission
-      (fetch as jest.Mock)
+      (fetch as Mock)
         .mockResolvedValueOnce({
           ok: true,
           json: () => Promise.resolve({ success: true }),
@@ -450,7 +452,7 @@ describe('ContactForm', () => {
       const user = userEvent.setup();
 
       // Mock successful submission
-      (fetch as jest.Mock)
+      (fetch as Mock)
         .mockResolvedValueOnce({
           ok: true,
           json: () => Promise.resolve({ success: true }),

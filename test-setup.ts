@@ -72,3 +72,6 @@ Object.defineProperty(window, 'scrollTo', {
 global.fetch = vi.fn();
 
 // Note: Console error suppression is handled in individual test files
+
+// Setup default environment variables for tests
+process.env.NEXT_PUBLIC_SITE_URL = 'https://test-site.com';

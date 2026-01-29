@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import Image from 'next/image';
 import { Artwork } from '@/lib/types';
 import { useCartActions, useIsInCart } from '@/lib/cart-store';

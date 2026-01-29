@@ -22,18 +22,8 @@ import {
 } from '../seo-utils';
 import { Artwork } from '../types';
 
-// Mock environment variable
-const originalEnv = process.env;
-beforeAll(() => {
-  process.env = {
-    ...originalEnv,
-    NEXT_PUBLIC_SITE_URL: 'https://test-site.com',
-  };
-});
-
-afterAll(() => {
-  process.env = originalEnv;
-});
+// Mock environment variable is handled in test-setup.ts
+// so SITE_CONFIG will be initialized with 'https://test-site.com'
 
 // Mock artwork for testing
 const mockArtwork: Artwork = {

@@ -2,7 +2,7 @@
 
 import { Category } from '@/lib/types';
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { CategoryCoverImage } from '@/components/ui/NextOptimizedImage';
 import { generateBlurDataURL } from '@/lib/image-utils';
 
