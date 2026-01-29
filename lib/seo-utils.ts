@@ -13,14 +13,14 @@ import { CATEGORY_CONFIG } from './artwork-data';
  * Base site configuration for SEO
  */
 export const SITE_CONFIG = {
-  name: 'Elena Rodriguez Art',
-  title: 'Elena Rodriguez - Contemporary Artist',
+  name: 'Prof. Zargar Zahoor Art',
+  title: 'Prof. Zargar Zahoor - Contemporary Artist',
   description:
-    'Discover the contemporary artwork of Elena Rodriguez. Explore a collection of over 1500 paintings across four distinct categories.',
+    'Discover the contemporary artwork of Prof. Zargar Zahoor. Explore a collection of over 1500 paintings across four distinct categories.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://elenarodriguez.art',
-  author: 'Elena Rodriguez',
+  author: 'Prof. Zargar Zahoor',
   keywords: [
-    'Elena Rodriguez',
+    'Prof. Zargar Zahoor',
     'contemporary art',
     'paintings',
     'artist portfolio',
@@ -54,7 +54,7 @@ export function generateHomeMetadata(): Metadata {
           url: '/images/landing-background.svg',
           width: 1920,
           height: 1080,
-          alt: 'Elena Rodriguez artwork background',
+          alt: 'Prof. Zargar Zahoor artwork background',
         },
       ],
     },
@@ -93,7 +93,7 @@ export function generateAboutMetadata(): Metadata {
       url: `${SITE_CONFIG.url}/about`,
       images: [
         {
-          url: '/images/artist-photo-placeholder.svg',
+          url: '/images/artist-photo.jpeg',
           width: 800,
           height: 600,
           alt: `${SITE_CONFIG.author} in her studio`,
@@ -104,7 +104,7 @@ export function generateAboutMetadata(): Metadata {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/images/artist-photo-placeholder.svg'],
+      images: ['/images/artist-photo.jpeg'],
     },
     alternates: {
       canonical: `${SITE_CONFIG.url}/about`,
@@ -118,7 +118,7 @@ export function generateAboutMetadata(): Metadata {
 export function generateWorkMetadata(): Metadata {
   const title = 'Artwork Collection';
   const description =
-    "Explore Elena Rodriguez's artistic journey through four distinct collections, each representing different themes and creative explorations.";
+    "Explore Prof. Zargar Zahoor's artistic journey through four distinct collections, each representing different themes and creative explorations.";
 
   return {
     title,
@@ -139,7 +139,7 @@ export function generateWorkMetadata(): Metadata {
           url: '/images/category-placeholder.svg',
           width: 1200,
           height: 630,
-          alt: 'Elena Rodriguez artwork collection',
+          alt: 'Prof. Zargar Zahoor artwork collection',
         },
       ],
     },
@@ -314,7 +314,7 @@ export function generateArtistStructuredData() {
     jobTitle: 'Contemporary Artist',
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
-    image: '/images/artist-photo-placeholder.svg',
+    image: '/images/artist-photo.jpeg',
     sameAs: [SITE_CONFIG.social.instagram, SITE_CONFIG.social.facebook],
     knowsAbout: ['Contemporary Art', 'Painting', 'Fine Art', 'Abstract Art'],
     hasOccupation: {

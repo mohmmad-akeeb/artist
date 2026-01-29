@@ -98,7 +98,7 @@ export default function ImageModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10 touch-target p-2 bg-white/90 hover:bg-white active:bg-gray-100 rounded-full shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 group"
+          className="absolute top-3 sm:top-4 right-3 sm:right-4 z-50 touch-target p-2.5 bg-white/95 hover:bg-white active:bg-gray-100 rounded-full shadow-xl border border-gray-200/50 transition-all duration-300 hover:scale-110 active:scale-95 group backdrop-blur-sm"
           aria-label="Close modal"
         >
           <svg
@@ -177,12 +177,12 @@ export default function ImageModal({
         {/* Content Section */}
         <div className="w-full lg:w-96 xl:w-[28rem] bg-white flex flex-col">
           {/* Header */}
-          <div className="p-4 sm:p-6 border-b border-gray-200">
+          <div className="p-4 sm:p-6 border-b border-gray-200 pr-16 sm:pr-20">
             <div className="flex items-start justify-between mb-4">
-              <div>
+              <div className="flex-1 pr-4">
                 <h1
                   id="modal-title"
-                  className="text-2xl font-bold text-gray-900 mb-2"
+                  className="text-2xl font-bold text-gray-900 mb-2 pr-2"
                 >
                   {artwork.title}
                 </h1>
@@ -200,7 +200,7 @@ export default function ImageModal({
               {/* Cart Button */}
               <button
                 onClick={handleCartToggle}
-                className={`touch-target p-2 sm:p-3 rounded-full transition-all duration-200 ${
+                className={`flex-shrink-0 touch-target p-2 sm:p-3 rounded-full transition-all duration-200 ${
                   isInCart
                     ? 'bg-primary-800 text-white hover:bg-primary-900 active:bg-primary-700'
                     : 'bg-primary-100 text-primary-700 hover:bg-primary-200 active:bg-primary-300'
@@ -306,24 +306,26 @@ export default function ImageModal({
               </div>
 
               {/* Print Inquiry CTA */}
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-gray-50 rounded-lg p-4 mt-2">
                 <h4 className="font-medium text-gray-900 mb-2">
                   Interested in a print?
                 </h4>
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm text-gray-600 mb-4">
                   {isInCart
                     ? 'This artwork is selected for your print inquiry.'
                     : 'Add this artwork to your selection and contact us for pricing.'}
                 </p>
                 <button
                   onClick={handleCartToggle}
-                  className={`w-full py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`w-full py-3 px-4 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md ${
                     isInCart
-                      ? 'bg-red-100 text-red-700 hover:bg-red-200'
-                      : 'bg-primary-800 text-white hover:bg-primary-900'
+                      ? 'bg-red-100 text-red-700 hover:bg-red-200 border border-red-200'
+                      : 'bg-primary-800 text-white hover:bg-primary-900 active:bg-primary-700'
                   }`}
                 >
-                  {isInCart ? 'Remove from Selection' : 'Add to Selection'}
+                  {isInCart
+                    ? 'Remove from Selection'
+                    : 'Select for Print Query'}
                 </button>
               </div>
             </div>

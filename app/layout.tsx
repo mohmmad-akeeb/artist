@@ -10,28 +10,27 @@ import ImageModalProvider from '@/components/ui/ImageModalProvider';
 import CriticalImagePreloader from '@/components/ui/CriticalImagePreloader';
 import { ErrorBoundary } from '@/components/error/ErrorBoundary';
 import ServiceStatus from '@/components/ui/ServiceStatus';
-import AnalyticsProvider from '@/components/analytics/AnalyticsProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Elena Rodriguez - Contemporary Artist',
-    template: '%s | Elena Rodriguez Art',
+    default: 'Prof. Zargar Zahoor - Contemporary Artist',
+    template: '%s | Prof. Zargar Zahoor Art',
   },
   description:
-    'Discover the contemporary artwork of Elena Rodriguez. Explore a collection of over 1500 paintings across four distinct categories.',
+    'Discover the contemporary artwork of Prof. Zargar Zahoor. Explore a collection of over 1500 paintings across four distinct categories.',
   keywords: [
-    'Elena Rodriguez',
+    'Prof. Zargar Zahoor',
     'contemporary art',
     'paintings',
     'artist portfolio',
     'fine art',
     'abstract art',
   ],
-  authors: [{ name: 'Elena Rodriguez' }],
-  creator: 'Elena Rodriguez',
-  publisher: 'Elena Rodriguez Art',
+  authors: [{ name: 'Prof. Zargar Zahoor' }],
+  creator: 'Prof. Zargar Zahoor',
+  publisher: 'Prof. Zargar Zahoor Art',
   robots: {
     index: true,
     follow: true,
@@ -78,19 +77,17 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <AnalyticsProvider>
-          <ErrorBoundary>
-            <Navigation />
-            <PageTransition>
-              <main className="flex-1 pt-16">{children}</main>
-            </PageTransition>
-            <Footer />
-            <CartIndicator />
-            <ImageModalProvider />
-            <CriticalImagePreloader />
-            <ServiceStatus />
-          </ErrorBoundary>
-        </AnalyticsProvider>
+        <ErrorBoundary>
+          <Navigation />
+          <PageTransition>
+            <main className="flex-1 pt-16">{children}</main>
+          </PageTransition>
+          <Footer />
+          <CartIndicator />
+          <ImageModalProvider />
+          <CriticalImagePreloader />
+          <ServiceStatus />
+        </ErrorBoundary>
       </body>
     </html>
   );

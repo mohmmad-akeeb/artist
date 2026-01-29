@@ -17,7 +17,7 @@ export default function Press() {
         </h1>
         <p className="text-base sm:text-lg lg:text-xl text-primary-600 max-w-3xl mx-auto leading-relaxed px-4">
           Discover media coverage, exhibitions, and press features highlighting
-          Elena Rodriguez&apos;s contemporary artwork and artistic journey.
+          Prof. Zargar Zahoor&apos;s contemporary artwork and artistic journey.
         </p>
       </div>
 
@@ -38,8 +38,8 @@ export default function Press() {
                 </span>
               </div>
               <p className="text-primary-700 mb-4 leading-relaxed">
-                &ldquo;Elena Rodriguez&apos;s latest collection demonstrates a
-                masterful understanding of minimalist principles while
+                &ldquo;Prof. Zargar Zahoor&apos;s latest collection demonstrates
+                a masterful understanding of minimalist principles while
                 maintaining emotional depth that resonates with contemporary
                 audiences.&rdquo;
               </p>
@@ -241,7 +241,7 @@ export default function Press() {
           <div className="bg-white border border-primary-200 rounded-lg p-6 sm:p-8 text-center">
             <p className="text-primary-700 mb-6 leading-relaxed">
               For press inquiries, interview requests, high-resolution images,
-              or additional information about Elena Rodriguez and her work,
+              or additional information about Prof. Zargar Zahoor and his work,
               please get in touch.
             </p>
             <Link

@@ -185,7 +185,7 @@ export function generateImageSizes(): string {
 export const FALLBACK_IMAGES = {
   artwork: '/images/artwork-placeholder.svg',
   category: '/images/category-placeholder.svg',
-  artist: '/images/artist-photo-placeholder.svg',
+  artist: '/images/artist-photo.jpeg',
 } as const;
 
 /**

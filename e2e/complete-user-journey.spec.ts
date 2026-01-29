@@ -4,10 +4,10 @@ test.describe('Complete User Journey', () => {
   test('full user journey: browse, select, and inquire', async ({ page }) => {
     // Step 1: Land on homepage
     await page.goto('/');
-    await expect(page).toHaveTitle(/Elena Rodriguez/);
+    await expect(page).toHaveTitle(/Prof. Zargar Zahoor/);
 
     // Verify landing page content
-    await expect(page.locator('h1')).toContainText('Elena Rodriguez');
+    await expect(page.locator('h1')).toContainText('Prof. Zargar Zahoor');
     await expect(page.locator('[data-testid="landing-hero"]')).toBeVisible();
 
     // Step 2: Navigate to About page

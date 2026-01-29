@@ -25,7 +25,7 @@ const CRITICAL_IMAGES = {
   ),
 
   // Artist photo for about page
-  artistPhoto: '/images/artist-photo-placeholder.svg',
+  artistPhoto: '/images/artist-photo.jpeg',
 } as const;
 
 /**

@@ -9,8 +9,8 @@ test.describe('Artwork Browsing Journey', () => {
     page,
   }) => {
     // Start on landing page
-    await expect(page).toHaveTitle(/Elena Rodriguez/);
-    await expect(page.locator('h1')).toContainText('Elena Rodriguez');
+    await expect(page).toHaveTitle(/Prof. Zargar Zahoor/);
+    await expect(page.locator('h1')).toContainText('Prof. Zargar Zahoor');
 
     // Navigate to work page
     await page.click('nav a[href="/work"]');

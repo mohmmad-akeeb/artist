@@ -7,7 +7,7 @@
 
 'use client';
 
-import React, { useState, useCallback, forwardRef, useRef } from 'react';
+import React, { useState, useCallback, forwardRef } from 'react';
 import Image from 'next/image';
 import { CategoryId, ImageSize } from '@/lib/types';
 import {
@@ -20,7 +20,6 @@ import {
   generateBlurDataURL,
   getImageDimensionsForSize,
 } from '@/lib/image-utils';
-
 
 /**
  * Props for NextOptimizedImage component
@@ -171,8 +170,6 @@ export const NextOptimizedImage = forwardRef<
     const [imageError, setImageError] = useState(false);
     const [isRetrying, setIsRetrying] = useState(false);
 
-
-
     // Generate image URL using R2 utilities
     const imageUrl = generateArtworkImageUrl(category, identifier, size);
     const fallbackUrl = getFallbackImageUrl('artwork');
@@ -213,8 +210,6 @@ export const NextOptimizedImage = forwardRef<
       setImageLoaded(false);
       setIsRetrying(true);
     }, []);
-
-
 
     // Show loading state
     if (!imageLoaded && !imageError && showLoading) {

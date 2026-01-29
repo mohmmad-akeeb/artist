@@ -12,15 +12,15 @@ export default function About() {
   return (
     <div className="container-custom py-8 sm:py-12 lg:py-20">
       {/* Page Title - Hidden on larger screens as content speaks for itself */}
-      <h1 className="sr-only">About Elena Rodriguez</h1>
+      <h1 className="sr-only">About Prof. Zargar Zahoor</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-start">
         {/* Artist Image - Left side on desktop, top on mobile */}
         <div className="relative">
           <div className="aspect-[4/5] relative overflow-hidden rounded-lg shadow-soft">
             <Image
-              src="/images/artist-photo-placeholder.svg"
-              alt="Elena Rodriguez, contemporary artist, in her studio surrounded by her minimalist paintings"
+              src="/images/artist-photo.jpeg"
+              alt="Prof. Zargar Zahoor, contemporary artist, in his studio surrounded by his minimalist paintings"
               fill
               className="object-cover transition-transform duration-300 hover:scale-105"
               priority
@@ -33,7 +33,7 @@ export default function About() {
         <div className="space-y-4 sm:space-y-6 lg:pt-8">
           <div className="space-y-3 sm:space-y-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-primary-900 leading-tight">
-              Elena Rodriguez
+              Prof. Zargar Zahoor
             </h2>
             <p className="text-base sm:text-lg text-primary-600 font-light">
               Contemporary Artist
@@ -42,10 +42,10 @@ export default function About() {
 
           <div className="space-y-4 sm:space-y-6 text-primary-700 leading-relaxed text-sm sm:text-base">
             <p className="text-base sm:text-lg">
-              Elena Rodriguez is a contemporary artist whose minimalist approach
-              to painting explores the delicate interplay between light, space,
-              and human emotion. Her work invites viewers into contemplative
-              spaces where simplicity reveals profound depth.
+              Prof. Zargar Zahoor is a contemporary artist whose minimalist
+              approach to painting explores the delicate interplay between
+              light, space, and human emotion. His work invites viewers into
+              contemplative spaces where simplicity reveals profound depth.
             </p>
 
             <p>

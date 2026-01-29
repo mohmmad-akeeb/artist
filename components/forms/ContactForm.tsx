@@ -110,8 +110,11 @@ export default function ContactForm({
 
     try {
       // Check if Web3forms access key is configured
-      if (!process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 
-          process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY === 'your_web3forms_access_key_here') {
+      if (
+        !process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+        process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ===
+          'your_web3forms_access_key_here'
+      ) {
         throw new Error(
           'Contact form is not configured yet. Please email me directly at artist@example.com'
         );

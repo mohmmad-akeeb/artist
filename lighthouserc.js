@@ -20,9 +20,7 @@ module.exports = {
             'http://localhost:3000/contact',
             'http://localhost:3000/press',
           ],
-      startServerCommand: process.env.CI
-        ? undefined
-        : 'npx serve out -p 3000',
+      startServerCommand: process.env.CI ? undefined : 'npx serve out -p 3000',
       numberOfRuns: process.env.CI ? 1 : 3,
       settings: {
         chromeFlags: '--no-sandbox --disable-dev-shm-usage',

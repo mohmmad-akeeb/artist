@@ -65,7 +65,7 @@ export default function LandingHero() {
         {(isVisible || imagePreloaded) && (
           <Image
             src="/images/landing-background.svg"
-            alt="Elena Rodriguez artwork background"
+            alt="Prof. Zargar Zahoor artwork background"
             fill
             priority
             placeholder="blur"
@@ -109,7 +109,7 @@ export default function LandingHero() {
                 '0 4px 20px rgba(0,0,0,0.5), 0 8px 40px rgba(0,0,0,0.3)',
             }}
           >
-            Elena Rodriguez
+            Prof. Zargar Zahoor
           </h1>
           <div
             className={`mt-6 w-24 h-px bg-white/70 mx-auto transition-all duration-1000 ease-out delay-500 ${
